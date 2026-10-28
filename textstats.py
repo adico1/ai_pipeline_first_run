@@ -1,15 +1,21 @@
 """A small text statistics command-line application."""
 import argparse
 import json
-from pathlib import Path
 import sys
+from pathlib import Path
 
 
 def analyze(text):
+    # Count characters
+    char_count = len(text)
+    # Count lines
+    line_count = len(text.splitlines())
+    # Count words based on Unicode whitespace
+    word_count = len(text.split()) if text.strip() else 0
     return {
-        "characters": len(text),
-        "words": len(text.split(" ")),
-        "lines": len(text.splitlines()),
+        "characters": char_count,
+        "words": word_count,
+        "lines": line_count,
     }
 
 
